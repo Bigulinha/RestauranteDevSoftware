@@ -17,7 +17,7 @@ public class Cardapio {
 	
 	public void inicializarPratos() throws IOException {
 		
-		File arquivo = new File("C:\\pratos.csv");
+		File arquivo = new File("C:\\Users\\ACER\\Documents\\Git\\RestauranteDevSoftware\\src\\Restaurante\\src\\br\\edu\\up\\dominio\\pratos.csv");
 		
 		BufferedReader leitor = new BufferedReader(
 			    new InputStreamReader(new FileInputStream(arquivo),"UTF-8"));
@@ -55,7 +55,7 @@ public class Cardapio {
 	
 	public void inicializarBebidas() throws IOException {
 		
-		File arquivo = new File("C:\\bebidas-tabuladas.txt");
+		File arquivo = new File("C:\\Users\\ACER\\Documents\\Git\\RestauranteDevSoftware\\src\\Restaurante\\src\\br\\edu\\up\\dominio\\bebidas-tabuladas.txt");
 		
 		BufferedReader leitor = new BufferedReader(
 			    new InputStreamReader(new FileInputStream(arquivo),"UTF-8"));
@@ -93,7 +93,7 @@ public class Cardapio {
 
 	public void inicializarVinhos() throws IOException {
 	
-		File arquivo = new File("C:\\vinhos-tabulados.txt");
+		File arquivo = new File("C:\\Users\\ACER\\Documents\\Git\\RestauranteDevSoftware\\src\\Restaurante\\src\\br\\edu\\up\\dominio\\vinhos-tabulados.txt");
 		
 		BufferedReader leitor = new BufferedReader(
 			    new InputStreamReader(new FileInputStream(arquivo),"UTF-8"));
