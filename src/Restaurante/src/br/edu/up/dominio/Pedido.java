@@ -34,7 +34,7 @@ public class Pedido {
 				System.out.println("NOME: " + listaPratos.get(i).nome);
 				System.out.println("OBSERVAÇÃO: " + listaPratos.get(i).observacao);
 				System.out.println("PREÇO: R$" + listaPratos.get(i).getPrecoFormatado());
-				System.out.println("-------------------");
+				System.out.println("=================================================================");
 
 			}
 		}
@@ -50,7 +50,7 @@ public class Pedido {
 				System.out.println("NOME: " + listaBebidas.get(i).nome);
 				System.out.println("OBSERVAÇÃO: " + listaBebidas.get(i).observacao);
 				System.out.println("PREÇO: R$" + listaBebidas.get(i).getPrecoFormatado());
-				System.out.println("-------------------");
+				System.out.println("=================================================================");
 
 			}
 		}
@@ -66,7 +66,7 @@ public class Pedido {
 				System.out.println("NOME: " + listaVinhos.get(i).nome);
 				System.out.println("OBSERVAÇÃO: " + listaVinhos.get(i).observacao);
 				System.out.println("PREÇO: R$" + listaVinhos.get(i).getPrecoFormatado());
-				System.out.println("-------------------");
+				System.out.println("=================================================================");
 
 			}
 		}
@@ -96,7 +96,7 @@ public class Pedido {
 
 		System.out.println("O VALOR TOTAL FOI DE: R$" + getTotalFormatado());
 
-		System.out.println("-------------------");
+		System.out.println("=================================================================");
 
 	}
 
@@ -110,7 +110,7 @@ public class Pedido {
 				gravadorPedido.write("NOME: " + listaPratos.get(i).nome + "\r\n");
 				gravadorPedido.write("OBSERVAÇÃO: " + listaPratos.get(i).observacao + "\r\n");
 				gravadorPedido.write("PREÇO: R$" + listaPratos.get(i).getPrecoFormatado() + "\r\n");
-				gravadorPedido.write("-------------------" + "\r\n");
+				gravadorPedido.write("=================================================================" + "\r\n");
 
 			}
 		}
@@ -126,7 +126,7 @@ public class Pedido {
 				gravadorPedido.write("NOME: " + listaBebidas.get(i).nome + "\r\n");
 				gravadorPedido.write("OBSERVAÇÃO: " + listaBebidas.get(i).observacao + "\r\n");
 				gravadorPedido.write("PREÇO: R$" + listaBebidas.get(i).getPrecoFormatado() + "\r\n");
-				gravadorPedido.write("-------------------" + "\r\n");
+				gravadorPedido.write("=================================================================" + "\r\n");
 
 			}
 		}
@@ -142,7 +142,7 @@ public class Pedido {
 				gravadorPedido.write("NOME: " + listaVinhos.get(i).nome + "\r\n");
 				gravadorPedido.write("OBSERVAÇÃO: " + listaVinhos.get(i).observacao + "\r\n");
 				gravadorPedido.write("PREÇO: R$" + listaVinhos.get(i).getPrecoFormatado() + "\r\n");
-				gravadorPedido.write("-------------------" + "\r\n");
+				gravadorPedido.write("=================================================================" + "\r\n");
 
 			}
 		}
@@ -157,7 +157,7 @@ public class Pedido {
 
 		gravadorPedido.write("O VALOR TOTAL FOI DE: R$" + getTotalFormatado() + "\r\n");
 
-		gravadorPedido.write("-------------------" + "\r\n");
+		gravadorPedido.write("=================================================================" + "\r\n");
 
 	}
 

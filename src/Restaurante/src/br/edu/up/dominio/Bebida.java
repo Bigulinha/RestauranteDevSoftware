@@ -8,9 +8,8 @@ public class Bebida {
 	public String nome;
 	public double preco;
 	public String observacao;
-	
 	public String getPrecoFormatado() {
-		
+
 		NumberFormat nf= NumberFormat.getInstance();
 		nf.setMaximumFractionDigits(2);
 		nf.setMinimumFractionDigits(2);

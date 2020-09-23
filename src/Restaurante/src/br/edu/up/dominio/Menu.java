@@ -1,21 +1,16 @@
 package br.edu.up.dominio;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Scanner;
 
+import br.edu.up.crud.Criar;
+import br.edu.up.sistema.Armazenamento;
+
 public class Menu {
 
+	static Criar criar = new Criar();
+	
 	public static void menuInicial(Cardapio cardapio, List<Pedido> listaPedidos) throws IOException {
 
 		Scanner leitor = new Scanner(System.in);
@@ -43,7 +38,7 @@ public class Menu {
 				Pedido.vizualizarPedidos(listaPedidos);
 				break;
 			case 0:
-				arquivoPedido(listaPedidos);
+				Armazenamento.arquivoPedido(listaPedidos);
 				return;
 			default:
 				System.out.println("Opção invalida!");
@@ -117,13 +112,13 @@ public class Menu {
 
 			switch (opcao) {
 			case 1:
-				cardapio.incluirPrato();
+				criar.incluirPrato(cardapio.listaPratos);
 				break;
 			case 2:
-				cardapio.incluirBebida();
+				criar.incluirBebida(cardapio.listaBebidas);
 				break;
 			case 3:
-				cardapio.incluirVinho();
+				criar.incluirVinho(cardapio.listaVinhos);
 				break;
 			case 0:
 				// menuInicial(cardapio, listaPedidos);
@@ -138,73 +133,5 @@ public class Menu {
 		// incluirItemCardapio(cardapio, listaPedidos);
 	}
 
-	public static void arquivoPedido(List<Pedido> listaPedidos) throws IOException {
-		
-		int idPedido = 0;
-		double totalVendas = 0.00;
-		// BRUNO EM BAIXO -------------
-		// BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new
-		// FileOutputStream(out1, true), "UTF-8"));
-		File arquivoPedido = new File("d:\\Eclipse\\atv3\\arquivoPedidos.txt");
-		BufferedWriter gravadorPedido = new BufferedWriter(
-				new OutputStreamWriter(new FileOutputStream(arquivoPedido, true), // Append arquivo
-						StandardCharsets.UTF_8 // Set encoding
-				));
-		
-		
-		File arquivoIndexUltimoPedido = new File("d:\\Eclipse\\atv3\\indexUltimoPedido.txt");
-		BufferedWriter gravadorUltimoIndex = new BufferedWriter(
-				new OutputStreamWriter(new FileOutputStream("d:\\Eclipse\\atv3\\indexUltimoPedido.txt", true), // Append arquivo
-						StandardCharsets.UTF_8 // Set encoding
-				));
-		
-		Scanner leitorIndex = new Scanner(arquivoIndexUltimoPedido);
-//		System.out.println(leitorIndex.nextLine());
-		while (leitorIndex.hasNext()) {
-			String ultimoIndex = leitorIndex.nextLine();
-			idPedido = Integer.parseInt(ultimoIndex);
-			String ultimoValorTotal = leitorIndex.nextLine();
-			totalVendas = Double.parseDouble(ultimoValorTotal);
-		}
-		
-		double valorTotal = 0;
-		for (int i = 0; i < listaPedidos.size(); i++) {
-			valorTotal += listaPedidos.get(i).total;
-			gravadorPedido.write("PEDIDO " + (idPedido + 1) + "\r\n");
-			listaPedidos.get(i).gravarPedido(gravadorPedido);
-			idPedido++;			
-		}
-		
-		
-		totalVendas += valorTotal;
-		gravadorPedido.write("O VALOR TOTAL É DE: R$" + Pedido.getTotalFormatado(totalVendas) + "\n");
-		File arquivoGravacao = new File("d:\\Eclipse\\atv3\\indexUltimoPedido.txt");
-		PrintWriter gravadorIndex = new PrintWriter (arquivoGravacao);
-		
-		gravadorIndex.println(idPedido);
-		gravadorIndex.println(totalVendas);
-		
-		gravadorIndex.close();
-		gravadorPedido.close();
-		
-	}
-
-	// BRUNO EM BAIXO ------------- ORIGINAL FUNFANDO
-	// BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new
-	// FileOutputStream(out1, true), "UTF-8"));
-//			Path arquivoPedido = Paths.get("d:\\Eclipse\\atv3\\arquivoPedidos.txt");
-//			BufferedWriter gravadorPedido = Files.newBufferedWriter(arquivoPedido, StandardCharsets.UTF_8);
-//			
-//			double valorTotal = 0;
-//			for(int i = 0; i < listaPedidos.size(); i++) {
-//				valorTotal += listaPedidos.get(i).total;
-//				gravadorPedido.write("PEDIDO " + (i+1) + "\r\n");
-//				listaPedidos.get(i).gravarPedido(gravadorPedido);
-//			}
-//			
-//			gravadorPedido.write("O VALOR TOTAL É DE: R$" + Pedido.getTotalFormatado(valorTotal));
-//			
-//			gravadorPedido.close();
-//		}
-
+	
 }

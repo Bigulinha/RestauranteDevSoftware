@@ -9,8 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Cardapio {
+import br.edu.up.sistema.Impressora;
 
+public class Cardapio {
+	static Impressora impressora = new Impressora();
+	
 	public List<Prato> listaPratos = new ArrayList<Prato>();
 	public List<Bebida> listaBebidas = new ArrayList<Bebida>();
 	public List<Vinho> listaVinhos = new ArrayList<Vinho>();
@@ -38,18 +41,6 @@ public class Cardapio {
 
 	}
 
-	public void imprimirPratos() {
-
-		System.out.println("PRATOS");
-		for (int i = 0; i < listaPratos.size(); i++) {
-
-			System.out.println("PRATO " + (i + 1));
-			System.out.println("NOME: " + listaPratos.get(i).nome);
-			System.out.println("PREÇO: R$" + listaPratos.get(i).getPrecoFormatado());
-			System.out.println("-------------------");
-
-		}
-	}
 
 	public void inicializarBebidas() throws IOException {
 
@@ -74,18 +65,6 @@ public class Cardapio {
 
 	}
 
-	public void imprimirBebidas() {
-
-		System.out.println("BEBIDAS");
-		for (int i = 0; i < listaBebidas.size(); i++) {
-
-			System.out.println("BEBIDA " + (i + 1));
-			System.out.println("NOME: " + listaBebidas.get(i).nome);
-			System.out.println("PREÇO: R$" + listaBebidas.get(i).getPrecoFormatado());
-			System.out.println("-------------------");
-
-		}
-	}
 
 	public void inicializarVinhos() throws IOException {
 
@@ -110,18 +89,6 @@ public class Cardapio {
 
 	}
 
-	public void imprimirVinhos() {
-
-		System.out.println("VINHOS");
-		for (int i = 0; i < listaVinhos.size(); i++) {
-
-			System.out.println("VINHO " + (i + 1));
-			System.out.println("NOME: " + listaVinhos.get(i).nome);
-			System.out.println("PREÇO: R$" + listaVinhos.get(i).getPrecoFormatado());
-			System.out.println("-------------------");
-
-		}
-	}
 
 	public void inicializarCardapio() throws IOException {
 
@@ -131,62 +98,13 @@ public class Cardapio {
 
 	}
 
-	public void incluirPrato() throws IOException {
-
-		Prato prato = new Prato();
-
-		Scanner leitor = new Scanner(System.in);
-
-		System.out.println("DIGITE O NOME DO PRATO QUE DESEJA ADICIONAR NO CARDAPIO");
-		prato.nome = leitor.nextLine();
-		System.out.println("DIGITE O PREÇO DO PRATO INCLUIDO");
-		prato.preco = Double.parseDouble(leitor.nextLine().replaceAll(",", "."));
-
-		listaPratos.add(prato);
-
-		// leitor.close();
-
-	}
-
-	public void incluirBebida() throws IOException {
-
-		Bebida bebida = new Bebida();
-
-		Scanner leitor = new Scanner(System.in);
-
-		System.out.println("DIGITE O NOME DA BEBIDA QUE DESEJA ADICIONAR NO CARDAPIO");
-		bebida.nome = leitor.nextLine();
-		System.out.println("DIGITE O PREÇO DA BEBIDA INCLUIDA");
-		bebida.preco = Double.parseDouble(leitor.nextLine().replaceAll(",", "."));
-
-		listaBebidas.add(bebida);
-
-		// leitor.close();
-
-	}
-
-	public void incluirVinho() throws IOException {
-
-		Vinho vinho = new Vinho();
-
-		Scanner leitor = new Scanner(System.in);
-
-		System.out.println("DIGITE O NOME DO VINHO QUE DESEJA ADICIONAR NO CARDAPIO");
-		vinho.nome = leitor.nextLine();
-		System.out.println("DIGITE O PREÇO DO VINHO INCLUIDO");
-		vinho.preco = Double.parseDouble(leitor.nextLine().replaceAll(",", "."));
-
-		listaVinhos.add(vinho);
-
-		// leitor.close();
-
-	}
-
 	public static Pedido selecionarPrato(Cardapio cardapio, List<Pedido> listaPedidos, Pedido pedido)
 			throws IOException {
 
-		cardapio.imprimirPratos();
-
+//		Impressora impressora = new Impressora();
+		
+		impressora.imprimirPratos(cardapio.listaPratos);
+		
 		Scanner leitor = new Scanner(System.in);
 		int opcao;
 		String observacao;
@@ -224,8 +142,9 @@ public class Cardapio {
 
 	public static Pedido selecionarBebida(Cardapio cardapio, List<Pedido> listaPedidos, Pedido pedido)
 			throws IOException {
-
-		cardapio.imprimirBebidas();
+		
+//		Impressora impressora = new Impressora();
+		impressora.imprimirBebidas(cardapio.listaBebidas);
 
 		Scanner leitor = new Scanner(System.in);
 		int opcao;
@@ -265,7 +184,8 @@ public class Cardapio {
 	public static Pedido selecionarVinho(Cardapio cardapio, List<Pedido> listaPedidos, Pedido pedido)
 			throws IOException {
 
-		cardapio.imprimirVinhos();
+//		Impressora impressora = new Impressora();
+		impressora.imprimirVinhos(cardapio.listaVinhos);
 
 		Scanner leitor = new Scanner(System.in);
 		int opcao;
