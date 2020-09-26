@@ -1,6 +1,7 @@
 package br.edu.up.sistema;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -9,7 +10,10 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Scanner;
 
+import br.edu.up.dominio.Bebida;
 import br.edu.up.dominio.Pedido;
+import br.edu.up.dominio.Prato;
+import br.edu.up.dominio.Vinho;
 
 public class Armazenamento {
 	public static void arquivoPedido(List<Pedido> listaPedidos) throws IOException {
@@ -63,4 +67,42 @@ public class Armazenamento {
 
 	}
 
+	public static void salvarPrato(Prato prato) throws IOException {
+		File file = new File("D:\\Eclipse\\atv3\\pratos.csv");
+		BufferedWriter out = new BufferedWriter(
+				new OutputStreamWriter(
+						new FileOutputStream(file, true), // Append arquivo
+						StandardCharsets.UTF_8                  // Set encoding
+						)
+				);	
+		out.write("\n" + prato.nome + ";" +  prato.getPrecoFormatado().replaceAll(",", "."));
+		out.close();
+		
+	}
+
+	public static void salvarBebida(Bebida bebida) throws IOException {
+		File file = new File("D:\\Eclipse\\atv3\\bebidas-tabuladas.txt");
+		BufferedWriter out = new BufferedWriter(
+				new OutputStreamWriter(
+						new FileOutputStream(file, true), // Append arquivo
+						StandardCharsets.UTF_8                  // Set encoding
+						)
+				);	
+		out.write("\n" + bebida.getPrecoFormatado() + "\t" +  bebida.nome);
+		out.close();
+		
+	}
+	
+	public static void salvarVinho(Vinho vinho) throws IOException {
+		File file = new File("D:\\Eclipse\\atv3\\vinhos-tabulados.txt");
+		BufferedWriter out = new BufferedWriter(
+				new OutputStreamWriter(
+						new FileOutputStream(file, true), // Append arquivo
+						StandardCharsets.UTF_8                  // Set encoding
+						)
+				);	
+		out.write("\n" + vinho.getPrecoFormatado().replaceAll(",", ".") + "\t" + vinho.nome);
+		out.close();
+		
+	}
 }

@@ -7,6 +7,7 @@ import java.util.Scanner;
 import br.edu.up.dominio.Bebida;
 import br.edu.up.dominio.Prato;
 import br.edu.up.dominio.Vinho;
+import br.edu.up.sistema.Armazenamento;
 
 public class Criar {
 
@@ -22,6 +23,7 @@ public class Criar {
 		prato.preco = Double.parseDouble(leitor.nextLine().replaceAll(",", "."));
 
 		listaPratos.add(prato);
+		Armazenamento.salvarPrato(prato);
 
 		// leitor.close();
 
@@ -39,6 +41,7 @@ public class Criar {
 		bebida.preco = Double.parseDouble(leitor.nextLine().replaceAll(",", "."));
 
 		listaBebidas.add(bebida);
+		Armazenamento.salvarBebida(bebida);
 
 		// leitor.close();
 
@@ -58,7 +61,8 @@ public class Criar {
 		Vinho vinho = new Vinho(vinhos.preco, vinhos.nome);
 		Vinho.Incluir(listaVinhos, vinho);
 		
-//		Armazenamento.salvarVinho();
+		
+		Armazenamento.salvarVinho(vinho);
 
 		
 //		listaVinhos.add(vinhos);
