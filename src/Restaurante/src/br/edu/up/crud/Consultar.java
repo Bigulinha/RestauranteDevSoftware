@@ -1,7 +1,4 @@
 package br.edu.up.crud;
-
-import java.util.List;
-
 import br.edu.up.dominio.Bebida;
 import br.edu.up.dominio.Cardapio;
 import br.edu.up.dominio.Prato;

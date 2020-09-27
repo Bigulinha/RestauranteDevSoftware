@@ -20,9 +20,9 @@ public class Cardapio {
 
 	public void inicializarPratos() throws IOException {
 
-		File arquivo = new File("d:\\Eclipse\\atv3\\pratos.csv");
+		File arquivo = new File("..\\Restaurante\\src\\arquivos\\pratos.csv");
 
-		BufferedReader leitor = new BufferedReader(new InputStreamReader(new FileInputStream(arquivo), "UTF-8"));
+		BufferedReader leitor = new BufferedReader(new InputStreamReader(new FileInputStream(arquivo.getAbsolutePath()), "UTF-8"));
 
 		String linha = null;
 		leitor.readLine();
@@ -44,9 +44,9 @@ public class Cardapio {
 
 	public void inicializarBebidas() throws IOException {
 
-		File arquivo = new File("d:\\Eclipse\\atv3\\bebidas-tabuladas.txt");
+		File arquivo = new File("..\\Restaurante\\src\\arquivos\\bebidas-tabuladas.txt");
 
-		BufferedReader leitor = new BufferedReader(new InputStreamReader(new FileInputStream(arquivo), "UTF-8"));
+		BufferedReader leitor = new BufferedReader(new InputStreamReader(new FileInputStream(arquivo.getAbsolutePath()), "UTF-8"));
 
 		String linha = null;
 		leitor.readLine();
@@ -68,9 +68,9 @@ public class Cardapio {
 
 	public void inicializarVinhos() throws IOException {
 
-		File arquivo = new File("d:\\Eclipse\\atv3\\vinhos-tabulados.txt");
+		File arquivo = new File("..\\Restaurante\\src\\arquivos\\vinhos-tabulados.txt");
 
-		BufferedReader leitor = new BufferedReader(new InputStreamReader(new FileInputStream(arquivo), "UTF-8"));
+		BufferedReader leitor = new BufferedReader(new InputStreamReader(new FileInputStream(arquivo.getAbsolutePath()), "UTF-8"));
 
 		String linha = null;
 		leitor.readLine();
