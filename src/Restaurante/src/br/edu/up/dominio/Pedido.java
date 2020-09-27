@@ -32,8 +32,8 @@ public class Pedido {
 			for (int i = 0; i < listaPratos.size(); i++) {
 
 				System.out.println("PRATO " + (i + 1));
-				System.out.println("NOME: " + listaPratos.get(i).nome);
-				System.out.println("OBSERVAÇÃO: " + listaPratos.get(i).observacao);
+				System.out.println("NOME: " + listaPratos.get(i).getNome());
+				System.out.println("OBSERVAÇÃO: " + listaPratos.get(i).getObservacao());
 				System.out.println("PREÇO: R$" + listaPratos.get(i).getPrecoFormatado());
 				System.out.println("=================================================================");
 
@@ -48,8 +48,8 @@ public class Pedido {
 			for (int i = 0; i < listaBebidas.size(); i++) {
 
 				System.out.println("BEBIDA " + (i + 1));
-				System.out.println("NOME: " + listaBebidas.get(i).nome);
-				System.out.println("OBSERVAÇÃO: " + listaBebidas.get(i).observacao);
+				System.out.println("NOME: " + listaBebidas.get(i).getNome());
+				System.out.println("OBSERVAÇÃO: " + listaBebidas.get(i).getObservacao());
 				System.out.println("PREÇO: R$" + listaBebidas.get(i).getPrecoFormatado());
 				System.out.println("=================================================================");
 
@@ -64,8 +64,8 @@ public class Pedido {
 			for (int i = 0; i < listaVinhos.size(); i++) {
 
 				System.out.println("VINHO " + (i + 1));
-				System.out.println("NOME: " + listaVinhos.get(i).nome);
-				System.out.println("OBSERVAÇÃO: " + listaVinhos.get(i).observacao);
+				System.out.println("NOME: " + listaVinhos.get(i).getNome());
+				System.out.println("OBSERVAÇÃO: " + listaVinhos.get(i).getObservacao());
 				System.out.println("PREÇO: R$" + listaVinhos.get(i).getPrecoFormatado());
 				System.out.println("=================================================================");
 
@@ -76,15 +76,15 @@ public class Pedido {
 	public void setTotal() {
 		total = 0;
 		for (int i = 0; i < listaPratos.size(); i++) {
-			total += listaPratos.get(i).preco;
+			total += listaPratos.get(i).getPreco();
 		}
 
 		for (int i = 0; i < listaBebidas.size(); i++) {
-			total += listaBebidas.get(i).preco;
+			total += listaBebidas.get(i).getPreco();
 		}
 
 		for (int i = 0; i < listaVinhos.size(); i++) {
-			total += listaVinhos.get(i).preco;
+			total += listaVinhos.get(i).getPreco();
 		}
 	}
 
@@ -109,8 +109,8 @@ public class Pedido {
 				for (int i = 0; i < listaPratos.size(); i++) {
 
 					gravadorPedido.write("PRATO " + (i + 1) + "\r\n");
-					gravadorPedido.write("NOME: " + listaPratos.get(i).nome + "\r\n");
-					gravadorPedido.write("OBSERVAÇÃO: " + listaPratos.get(i).observacao + "\r\n");
+					gravadorPedido.write("NOME: " + listaPratos.get(i).getNome() + "\r\n");
+					gravadorPedido.write("OBSERVAÇÃO: " + listaPratos.get(i).getObservacao() + "\r\n");
 					gravadorPedido.write("PREÇO: R$" + listaPratos.get(i).getPrecoFormatado() + "\r\n");
 					gravadorPedido.write("=================================================================" + "\r\n");
 				}
@@ -130,8 +130,8 @@ public class Pedido {
 				for (int i = 0; i < listaBebidas.size(); i++) {
 
 					gravadorPedido.write("BEBIDA " + (i + 1) + "\r\n");
-					gravadorPedido.write("NOME: " + listaBebidas.get(i).nome + "\r\n");
-					gravadorPedido.write("OBSERVAÇÃO: " + listaBebidas.get(i).observacao + "\r\n");
+					gravadorPedido.write("NOME: " + listaBebidas.get(i).getNome() + "\r\n");
+					gravadorPedido.write("OBSERVAÇÃO: " + listaBebidas.get(i).getObservacao() + "\r\n");
 					gravadorPedido.write("PREÇO: R$" + listaBebidas.get(i).getPrecoFormatado() + "\r\n");
 					gravadorPedido.write("=================================================================" + "\r\n");
 
@@ -151,8 +151,8 @@ public class Pedido {
 				for (int i = 0; i < listaVinhos.size(); i++) {
 
 					gravadorPedido.write("VINHO " + (i + 1) + "\r\n");
-					gravadorPedido.write("NOME: " + listaVinhos.get(i).nome + "\r\n");
-					gravadorPedido.write("OBSERVAÇÃO: " + listaVinhos.get(i).observacao + "\r\n");
+					gravadorPedido.write("NOME: " + listaVinhos.get(i).getNome() + "\r\n");
+					gravadorPedido.write("OBSERVAÇÃO: " + listaVinhos.get(i).getObservacao() + "\r\n");
 					gravadorPedido.write("PREÇO: R$" + listaVinhos.get(i).getPrecoFormatado() + "\r\n");
 					gravadorPedido.write("=================================================================" + "\r\n");
 

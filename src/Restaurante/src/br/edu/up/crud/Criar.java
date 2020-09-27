@@ -17,9 +17,9 @@ public class Criar {
 		Scanner leitor = new Scanner(System.in);
 
 		System.out.println("DIGITE O NOME DO PRATO QUE DESEJA ADICIONAR NO CARDAPIO");
-		prato.nome = leitor.nextLine();
+		prato.setNome(leitor.nextLine());
 		System.out.println("DIGITE O PREÇO DO PRATO INCLUIDO");
-		prato.preco = Double.parseDouble(leitor.nextLine().replaceAll(",", "."));
+		prato.setPreco(Double.parseDouble(leitor.nextLine().replaceAll(",", ".")));
 
 		listaPratos.add(prato);
 		Armazenamento.salvarPrato(prato);
@@ -35,9 +35,9 @@ public class Criar {
 		Scanner leitor = new Scanner(System.in);
 
 		System.out.println("DIGITE O NOME DA BEBIDA QUE DESEJA ADICIONAR NO CARDAPIO");
-		bebida.nome = leitor.nextLine();
+		bebida.setNome(leitor.nextLine());
 		System.out.println("DIGITE O PREÇO DA BEBIDA INCLUIDA");
-		bebida.preco = Double.parseDouble(leitor.nextLine().replaceAll(",", "."));
+		bebida.setPreco(Double.parseDouble(leitor.nextLine().replaceAll(",", ".")));
 
 		listaBebidas.add(bebida);
 		Armazenamento.salvarBebida(bebida);
@@ -53,11 +53,11 @@ public class Criar {
 		Scanner leitor = new Scanner(System.in);
 		
 		System.out.println("DIGITE O NOME DO VINHO QUE DESEJA ADICIONAR NO CARDAPIO");
-		vinhos.nome = leitor.nextLine();
+		vinhos.setNome(leitor.nextLine());
 		System.out.println("DIGITE O PREÇO DO VINHO INCLUIDO");
-		vinhos.preco = Double.parseDouble(leitor.nextLine().replaceAll(",", "."));
+		vinhos.setPreco(Double.parseDouble(leitor.nextLine().replaceAll(",", ".")));
 		
-		Vinho vinho = new Vinho(vinhos.preco, vinhos.nome);
+		Vinho vinho = new Vinho(vinhos.getPreco(), vinhos.getNome());
 		Vinho.Incluir(listaVinhos, vinho);
 		
 		

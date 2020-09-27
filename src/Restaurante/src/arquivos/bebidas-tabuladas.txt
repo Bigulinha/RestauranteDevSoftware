@@ -9,4 +9,3 @@ PREÇO;BEBIDA
 4.5	Limonada
 5.3	Pepsi
 4.7	Sprite
-6262.0	dfgdfg

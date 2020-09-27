@@ -3,10 +3,8 @@ package br.edu.up.dominio;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -33,8 +31,8 @@ public class Cardapio {
 				String[] partes = linha.split(";");
 				
 				Prato prato = new Prato();
-				prato.nome = partes[0];
-				prato.preco = Double.parseDouble(partes[1].replaceAll(",", "."));
+				prato.setNome(partes[0]);
+				prato.setPreco(Double.parseDouble(partes[1].replaceAll(",", ".")));
 				
 				listaPratos.add(prato);
 				
@@ -63,8 +61,8 @@ public class Cardapio {
 				String[] partes = linha.split("\t");
 				
 				Bebida bebida = new Bebida();
-				bebida.preco = Double.parseDouble(partes[0].replaceAll(",", "."));
-				bebida.nome = partes[1];
+				bebida.setPreco(Double.parseDouble(partes[0].replaceAll(",", ".")));
+				bebida.setNome(partes[1]);
 				
 				listaBebidas.add(bebida);
 				
@@ -92,8 +90,8 @@ public class Cardapio {
 				String[] partes = linha.split("\t");
 				
 				Vinho vinho = new Vinho();
-				vinho.preco = Double.parseDouble(partes[0].replaceAll(",", "."));
-				vinho.nome = partes[1];
+				vinho.setPreco(Double.parseDouble(partes[0].replaceAll(",", ".")));
+				vinho.setNome(partes[1]);
 				
 				listaVinhos.add(vinho);
 				
@@ -140,9 +138,9 @@ public class Cardapio {
 				if ((int) observacao.charAt(0) == (int) 's') {
 					System.out.println("DIGITE A SUA OBSERVAÇÃO: ");
 					observacao = leitor.nextLine();
-					prato.observacao = observacao;
+					prato.setObservacao(observacao);
 				} else {
-					prato.observacao = "Nenhuma";
+					prato.setObservacao("Nenhuma");
 				}
 
 				pedido.listaPratos.add(prato);
@@ -181,9 +179,9 @@ public class Cardapio {
 				if ((int) observacao.charAt(0) == (int) 's') {
 					System.out.println("DIGITE A SUA OBSERVAÇÃO: ");
 					observacao = leitor.nextLine();
-					bebida.observacao = observacao;
+					bebida.setObservacao(observacao);
 				} else {
-					bebida.observacao = "Nenhuma";
+					bebida.setObservacao("Nenhuma");
 				}
 
 				pedido.listaBebidas.add(bebida);
@@ -222,9 +220,9 @@ public class Cardapio {
 				if ((int) observacao.charAt(0) == (int) 's') {
 					System.out.println("DIGITE A SUA OBSERVAÇÃO: ");
 					observacao = leitor.nextLine();
-					vinho.observacao = observacao;
+					vinho.setObservacao(observacao);
 				} else {
-					vinho.observacao = "Nenhuma";
+					vinho.setObservacao("Nenhuma");
 				}
 
 				pedido.listaVinhos.add(vinho);

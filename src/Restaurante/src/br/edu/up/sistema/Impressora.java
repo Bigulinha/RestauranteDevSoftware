@@ -13,7 +13,7 @@ public class Impressora {
 		System.out.println("PRATOS");
 		for (int i = 0; i < listaPratos.size(); i++) {
 			System.out.println("PRATO " + (i + 1));
-			System.out.println("NOME: " + listaPratos.get(i).nome);
+			System.out.println("NOME: " + listaPratos.get(i).getNome());
 			System.out.println("PREÇO: R$" + listaPratos.get(i).getPrecoFormatado());
 			System.out.println("=================================================================");
 		}
@@ -24,7 +24,7 @@ public class Impressora {
 		System.out.println("BEBIDAS");
 		for (int i = 0; i < listaBebidas.size(); i++) {
 			System.out.println("BEBIDA " + (i + 1));
-			System.out.println("NOME: " + listaBebidas.get(i).nome);
+			System.out.println("NOME: " + listaBebidas.get(i).getNome());
 			System.out.println("PREÇO: R$" + listaBebidas.get(i).getPrecoFormatado());
 			System.out.println("=================================================================");
 		}
@@ -35,7 +35,7 @@ public class Impressora {
 		System.out.println("VINHOS");
 		for (int i = 0; i < listaVinhos.size(); i++) {
 			System.out.println("VINHO " + (i + 1));
-			System.out.println("NOME: " + listaVinhos.get(i).nome);
+			System.out.println("NOME: " + listaVinhos.get(i).getNome());
 			System.out.println("PREÇO: R$" + listaVinhos.get(i).getPrecoFormatado());
 			System.out.println("=================================================================");
 		}

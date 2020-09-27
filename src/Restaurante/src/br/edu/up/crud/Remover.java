@@ -2,15 +2,10 @@ package br.edu.up.crud;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
 import java.util.Scanner;
 
 import br.edu.up.dominio.Bebida;
@@ -26,9 +21,9 @@ public class Remover {
 
 		String pratoRemover = leitor.nextLine();
 		for (int i = cardapio.listaPratos.size() - 1; i >= 0; i--) {
-			if (cardapio.listaPratos.get(i).nome.contains(pratoRemover)) {
-				System.out.println("Prato encontrado: " + cardapio.listaPratos.get(i).nome + "\t" + "VALOR: "
-						+ cardapio.listaPratos.get(i).preco);
+			if (cardapio.listaPratos.get(i).getNome().contains(pratoRemover)) {
+				System.out.println("Prato encontrado: " + cardapio.listaPratos.get(i).getNome() + "\t" + "VALOR: "
+						+ cardapio.listaPratos.get(i).getPreco());
 				cardapio.listaPratos.remove(i);
 			}
 		}
@@ -44,7 +39,7 @@ public class Remover {
 			gravadorPedido.write("PRATO;PRECO");
 			for (Prato listaPrato : cardapio.listaPratos) {
 				
-				gravadorPedido.write("\n" + listaPrato.nome + ";" + listaPrato.preco);
+				gravadorPedido.write("\n" + listaPrato.getNome() + ";" + listaPrato.getPreco());
 			}
 			gravadorPedido.close();
 		} catch (IOException e) {
@@ -60,9 +55,9 @@ public class Remover {
 
 		String bebidaRemover = leitor.nextLine();
 		for (int i = cardapio.listaBebidas.size() - 1; i >= 0; i--) {
-			if (cardapio.listaBebidas.get(i).nome.contains(bebidaRemover)) {
-				System.out.println("BEBIDA ENCONTRADA: " + cardapio.listaBebidas.get(i).nome + "\t" + "VALOR: "
-						+ cardapio.listaBebidas.get(i).preco);
+			if (cardapio.listaBebidas.get(i).getNome().contains(bebidaRemover)) {
+				System.out.println("BEBIDA ENCONTRADA: " + cardapio.listaBebidas.get(i).getNome() + "\t" + "VALOR: "
+						+ cardapio.listaBebidas.get(i).getPreco());
 				cardapio.listaBebidas.remove(i);
 			}
 		}
@@ -75,7 +70,7 @@ public class Remover {
 					));
 			gravadorPedido.write("PREÇO;BEBIDA");
 			for (Bebida listaBebida : cardapio.listaBebidas) {
-				gravadorPedido.write("\n" + listaBebida.preco + "\t" + listaBebida.nome);
+				gravadorPedido.write("\n" + listaBebida.getPreco() + "\t" + listaBebida.getNome());
 			}
 			gravadorPedido.close();
 		} catch (IOException e) {
@@ -91,9 +86,9 @@ public class Remover {
 
 		String vinhoRemover = leitor.nextLine();
 		for (int i = cardapio.listaVinhos.size() - 1; i >= 0; i--) {
-			if (cardapio.listaVinhos.get(i).nome.contains(vinhoRemover)) {
-				System.out.println("VINHO ENCONTRADO: " + cardapio.listaVinhos.get(i).nome + "\t" + "VALOR: "
-						+ cardapio.listaVinhos.get(i).preco);
+			if (cardapio.listaVinhos.get(i).getNome().contains(vinhoRemover)) {
+				System.out.println("VINHO ENCONTRADO: " + cardapio.listaVinhos.get(i).getNome() + "\t" + "VALOR: "
+						+ cardapio.listaVinhos.get(i).getPreco());
 				cardapio.listaVinhos.remove(i);
 			}
 		}
@@ -107,7 +102,7 @@ public class Remover {
 					));
 			gravadorPedido.write("PRECO;VINHO");
 			for (Vinho listaVinho : cardapio.listaVinhos) {
-				gravadorPedido.write("\n" + listaVinho.preco + "\t" + listaVinho.nome);
+				gravadorPedido.write("\n" + listaVinho.getPreco() + "\t" + listaVinho.getNome());
 			}
 			gravadorPedido.close();
 		} catch (IOException e) {

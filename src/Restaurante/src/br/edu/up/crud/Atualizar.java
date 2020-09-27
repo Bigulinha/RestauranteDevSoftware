@@ -32,23 +32,23 @@ public class Atualizar {
 		String modificar;
 
 		for (Prato itemPrato : cardapio.listaPratos) {
-			if (itemPrato.nome.contains(pratoEditar)) {
+			if (itemPrato.getNome().contains(pratoEditar)) {
 
-				System.out.println("Prato encontrado: " + itemPrato.nome + "\t" + "VALOR: " + itemPrato.preco);
+				System.out.println("Prato encontrado: " + itemPrato.getNome() + "\t" + "VALOR: " + itemPrato.getPreco());
 				System.out.println("DIGITE 'S' PARA MODIFICAR O NOME OU 'N' PARA CONTINUAR");
 				modificar = leitor.nextLine();
 
 				if ((int) modificar.charAt(0) == (int) 's') {
 					System.out.println("DIGITE O NOME DESEJADO PARA O PRATO: ");
 					String novoNomeItem = leitor.nextLine();
-					itemPrato.nome = novoNomeItem;
+					itemPrato.setNome(novoNomeItem);
 				}
 				System.out.println("DIGITE 'S' PARA MODIFICAR O PREÇO OU 'N' PARA CONTINUAR");
 				modificar = leitor.nextLine();
 				if ((int) modificar.charAt(0) == (int) 's') {
 					System.out.println("DIGITE O PRECO DESEJADO PARA O PRATO: ");
 					double novoPrecoItem = leitor.nextDouble();
-					itemPrato.preco = novoPrecoItem;
+					itemPrato.setPreco(novoPrecoItem);
 				}
 					atualizarPratoArquivo(itemPrato, index);
 			}
@@ -63,7 +63,7 @@ public class Atualizar {
 		List<String> lines;
 		try {
 			lines = Files.readAllLines(path, StandardCharsets.UTF_8);
-			lines.set(index, itemPrato.nome + ";" + itemPrato.preco);
+			lines.set(index, itemPrato.getNome() + ";" + itemPrato.getPreco());
 			Files.write(path, lines, StandardCharsets.UTF_8);
 			System.out.println("PRATO ATUALIZADO COM SUCESSO\n");
 		} catch (IOException e) {
@@ -81,23 +81,23 @@ public class Atualizar {
 		String modificar;
 
 		for (Bebida itemBebida : cardapio.listaBebidas) {
-			if (itemBebida.nome.contains(bebidaEditar)) {
+			if (itemBebida.getNome().contains(bebidaEditar)) {
 
-				System.out.println("BEBIDA ENCONTRADA: " + itemBebida.nome + "\t" + "VALOR: " + itemBebida.preco);
+				System.out.println("BEBIDA ENCONTRADA: " + itemBebida.getNome() + "\t" + "VALOR: " + itemBebida.getPreco());
 				System.out.println("DIGITE 'S' PARA MODIFICAR O NOME OU 'N' PARA CONTINUAR");
 				modificar = leitor.nextLine();
 
 				if ((int) modificar.charAt(0) == (int) 's') {
 					System.out.println("DIGITE O NOME DESEJADO PARA A BEBIDA: ");
 					String novoNomeItem = leitor.nextLine();
-					itemBebida.nome = novoNomeItem;
+					itemBebida.setNome(novoNomeItem);
 				}
 				System.out.println("DIGITE 'S' PARA MODIFICAR O PREÇO OU 'N' PARA CONTINUAR");
 				modificar = leitor.nextLine();
 				if ((int) modificar.charAt(0) == (int) 's') {
 					System.out.println("DIGITE O PRECO DESEJADO PARA A BEBIDA: ");
 					double novoPrecoItem = leitor.nextDouble();
-					itemBebida.preco = novoPrecoItem;
+					itemBebida.setPreco(novoPrecoItem);
 				}
 				atualizarBebidaArquivo(itemBebida, index);
 				
@@ -114,7 +114,7 @@ public class Atualizar {
 		List<String> lines;
 		try {
 			lines = Files.readAllLines(path, StandardCharsets.UTF_8);
-			lines.set(index, itemBebida.preco + "\t" + itemBebida.nome);
+			lines.set(index, itemBebida.getPreco() + "\t" + itemBebida.getNome());
 			Files.write(path, lines, StandardCharsets.UTF_8);
 			System.out.println("BEBIDA ATUALIZADA COM SUCESSO\n");
 		} catch (IOException e) {
@@ -132,9 +132,9 @@ public class Atualizar {
 		String modificar;
 
 		for (Vinho itemVinho : cardapio.listaVinhos) {
-			if (itemVinho.nome.contains(vinhoEditar)) {
+			if (itemVinho.getNome().contains(vinhoEditar)) {
 
-				System.out.println("VINHO ENCONTRADO: " + itemVinho.nome + "\t" + "VALOR: " + itemVinho.preco);
+				System.out.println("VINHO ENCONTRADO: " + itemVinho.getNome() + "\t" + "VALOR: " + itemVinho.getPreco());
 				System.out.println("DIGITE 'S' PARA MODIFICAR O NOME OU 'N' PARA CONTINUAR");
 //				leitor.nextLine();
 				modificar = leitor.nextLine();
@@ -142,14 +142,14 @@ public class Atualizar {
 				if ((int) modificar.charAt(0) == (int) 's') {
 					System.out.println("DIGITE O NOME DESEJADO PARA O VINHO: ");
 					String novoNomeItem = leitor.nextLine();
-					itemVinho.nome = novoNomeItem;
+					itemVinho.setNome(novoNomeItem);
 				}
 				System.out.println("DIGITE 'S' PARA MODIFICAR O PREÇO OU 'N' PARA CONTINUAR");
 				modificar = leitor.nextLine();
 				if ((int) modificar.charAt(0) == (int) 's') {
 					System.out.println("DIGITE O PRECO DESEJADO PARA O VINHO: ");
 					double novoPrecoItem = leitor.nextDouble();
-					itemVinho.preco = novoPrecoItem;
+					itemVinho.setPreco(novoPrecoItem);
 				}
 				atualizarVinhoArquivo(itemVinho, index);
 
@@ -164,7 +164,7 @@ public class Atualizar {
 		List<String> lines;
 		try {
 			lines = Files.readAllLines(path, StandardCharsets.UTF_8);
-			lines.set(index, itemVinho.preco + "\t" + itemVinho.nome);
+			lines.set(index, itemVinho.getPreco() + "\t" + itemVinho.getNome());
 			Files.write(path, lines, StandardCharsets.UTF_8);
 			System.out.println("VINHO ATUALIZADO COM SUCESSO\n");
 		} catch (IOException e) {

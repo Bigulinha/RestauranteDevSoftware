@@ -1,7 +1,6 @@
 package br.edu.up.sistema;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -84,7 +83,7 @@ public class Armazenamento {
 							StandardCharsets.UTF_8                  // Set encoding
 							)
 					);
-			out.write("\n" + prato.nome + ";" +  prato.getPrecoFormatado().replaceAll(",", "."));
+			out.write("\n" + prato.getNome() + ";" +  prato.getPrecoFormatado().replaceAll(",", "."));
 			out.close();
 		} catch (IOException e) {
 			System.out.println("Falha no caminho do arquivo 'pratos.csv'!");
@@ -102,7 +101,7 @@ public class Armazenamento {
 							StandardCharsets.UTF_8                  // Set encoding
 							)
 					);
-			out.write("\n" + bebida.getPrecoFormatado() + "\t" +  bebida.nome);
+			out.write("\n" + bebida.getPrecoFormatado() + "\t" +  bebida.getNome());
 			out.close();
 			
 		} catch (IOException e) {
@@ -121,7 +120,7 @@ public class Armazenamento {
 							StandardCharsets.UTF_8                  // Set encoding
 							)
 					);
-			out.write("\n" + vinho.getPrecoFormatado().replaceAll(",", ".") + "\t" + vinho.nome);
+			out.write("\n" + vinho.getPrecoFormatado().replaceAll(",", ".") + "\t" + vinho.getNome());
 			out.close();
 			
 			

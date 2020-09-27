@@ -11,16 +11,16 @@ public class Consultar {
 		System.out.println("=================================================================\nPRATOS:");
 		
 		for (Prato pratos : cardapio.listaPratos) {
-			System.out.println(pratos.nome + "\t" + pratos.preco);
+			System.out.println(pratos.getPreco() + "\t" + pratos.getNome());
 		}
 		System.out.println("=================================================================\nBEBIDAS:");
 		
 		for (Bebida bebidas : cardapio.listaBebidas) {
-			System.out.println(bebidas.nome + "\t" + bebidas.preco);
+			System.out.println( bebidas.getPreco() + "\t" + bebidas.getNome());
 		}
 		System.out.println("=================================================================\nVINHOS: ");
 		for (Vinho vinhos : cardapio.listaVinhos) {
-			System.out.println(vinhos.nome + "\t" + vinhos.preco);
+			System.out.println(vinhos.getPreco() + "\t" +vinhos.getNome() );
 		}
 		System.out.println("\n");
 	}
