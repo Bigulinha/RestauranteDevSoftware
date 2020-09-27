@@ -3,8 +3,10 @@ package br.edu.up.dominio;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -18,84 +20,98 @@ public class Cardapio {
 	public List<Bebida> listaBebidas = new ArrayList<Bebida>();
 	public List<Vinho> listaVinhos = new ArrayList<Vinho>();
 
-	public void inicializarPratos() throws IOException {
+	public void inicializarPratos(){
 
 		File arquivo = new File("..\\Restaurante\\src\\arquivos\\pratos.csv");
 
-		BufferedReader leitor = new BufferedReader(new InputStreamReader(new FileInputStream(arquivo.getAbsolutePath()), "UTF-8"));
-
-		String linha = null;
-		leitor.readLine();
-		while ((linha = leitor.readLine()) != null) {
-			String[] partes = linha.split(";");
-
-			Prato prato = new Prato();
-			prato.nome = partes[0];
-			prato.preco = Double.parseDouble(partes[1].replaceAll(",", "."));
-
-			listaPratos.add(prato);
-
+		BufferedReader leitor;
+		try {
+			leitor = new BufferedReader(new InputStreamReader(new FileInputStream(arquivo.getAbsolutePath()), "UTF-8"));
+			String linha = null;
+			leitor.readLine();
+			while ((linha = leitor.readLine()) != null) {
+				String[] partes = linha.split(";");
+				
+				Prato prato = new Prato();
+				prato.nome = partes[0];
+				prato.preco = Double.parseDouble(partes[1].replaceAll(",", "."));
+				
+				listaPratos.add(prato);
+				
+			}
+		} catch (NumberFormatException | IOException e) {
+			System.out.println("Erro na conversão de string para double");
 		}
+
+		
 
 		// leitor.close();
 
 	}
 
 
-	public void inicializarBebidas() throws IOException {
+	public void inicializarBebidas(){
 
 		File arquivo = new File("..\\Restaurante\\src\\arquivos\\bebidas-tabuladas.txt");
 
-		BufferedReader leitor = new BufferedReader(new InputStreamReader(new FileInputStream(arquivo.getAbsolutePath()), "UTF-8"));
-
-		String linha = null;
-		leitor.readLine();
-		while ((linha = leitor.readLine()) != null) {
-			String[] partes = linha.split("\t");
-
-			Bebida bebida = new Bebida();
-			bebida.preco = Double.parseDouble(partes[0].replaceAll(",", "."));
-			bebida.nome = partes[1];
-
-			listaBebidas.add(bebida);
-
+		BufferedReader leitor;
+		try {
+			leitor = new BufferedReader(new InputStreamReader(new FileInputStream(arquivo.getAbsolutePath()), "UTF-8"));
+			String linha = null;
+			leitor.readLine();
+			while ((linha = leitor.readLine()) != null) {
+				String[] partes = linha.split("\t");
+				
+				Bebida bebida = new Bebida();
+				bebida.preco = Double.parseDouble(partes[0].replaceAll(",", "."));
+				bebida.nome = partes[1];
+				
+				listaBebidas.add(bebida);
+				
+			}
+		} catch ( NumberFormatException | IOException e) {
+			System.out.println("Erro na conversão de string para double");
 		}
+
 
 		// leitor.close();
 
 	}
 
 
-	public void inicializarVinhos() throws IOException {
+	public void inicializarVinhos(){
 
 		File arquivo = new File("..\\Restaurante\\src\\arquivos\\vinhos-tabulados.txt");
 
-		BufferedReader leitor = new BufferedReader(new InputStreamReader(new FileInputStream(arquivo.getAbsolutePath()), "UTF-8"));
-
-		String linha = null;
-		leitor.readLine();
-		while ((linha = leitor.readLine()) != null) {
-			String[] partes = linha.split("\t");
-
-			Vinho vinho = new Vinho();
-			vinho.preco = Double.parseDouble(partes[0].replaceAll(",", "."));
-			vinho.nome = partes[1];
-
-			listaVinhos.add(vinho);
-
+		BufferedReader leitor;
+		try {
+			leitor = new BufferedReader(new InputStreamReader(new FileInputStream(arquivo.getAbsolutePath()), "UTF-8"));
+			String linha = null;
+			leitor.readLine();
+			while ((linha = leitor.readLine()) != null) {
+				String[] partes = linha.split("\t");
+				
+				Vinho vinho = new Vinho();
+				vinho.preco = Double.parseDouble(partes[0].replaceAll(",", "."));
+				vinho.nome = partes[1];
+				
+				listaVinhos.add(vinho);
+				
+			}
+		} catch (NumberFormatException | IOException e) {
+			System.out.println("Erro na conversão de string para double");
 		}
+
 
 //		leitor.close();
 
 	}
 
 
-	public void inicializarCardapio() throws IOException {
-
-		inicializarPratos();
-		inicializarBebidas();
-		inicializarVinhos();
-
+	public void inicializarCardapio(){
+			inicializarPratos();
+			inicializarBebidas();
+			inicializarVinhos();
 	}
 
 	public static Pedido selecionarPrato(Cardapio cardapio, List<Pedido> listaPedidos, Pedido pedido)

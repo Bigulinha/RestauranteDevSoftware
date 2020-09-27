@@ -14,7 +14,7 @@ public class Menu {
 
 	static Criar criar = new Criar();
 
-	public static void menuInicial(Cardapio cardapio, List<Pedido> listaPedidos) throws IOException {
+	public static void menuInicial(Cardapio cardapio, List<Pedido> listaPedidos){
 
 		Scanner leitor = new Scanner(System.in);
 		int opcao = -1;
@@ -35,6 +35,7 @@ public class Menu {
 
 			switch (opcao) {
 			case 1:
+				
 				incluirItemCardapio(cardapio, listaPedidos);
 				break;
 			case 2:
@@ -63,7 +64,7 @@ public class Menu {
 		}
 	}
 
-	public static void escolherCardapio(Cardapio cardapio, List<Pedido> listaPedidos) throws IOException {
+	public static void escolherCardapio(Cardapio cardapio, List<Pedido> listaPedidos){
 
 		Pedido pedido = new Pedido();
 
@@ -83,13 +84,25 @@ public class Menu {
 
 			switch (opcao) {
 			case 1:
-				pedido = Cardapio.selecionarPrato(cardapio, listaPedidos, pedido);
+				try {
+					pedido = Cardapio.selecionarPrato(cardapio, listaPedidos, pedido);
+				} catch (IOException e) {
+					System.out.println("Chamada de função inválida!");
+				}
 				break;
 			case 2:
-				pedido = Cardapio.selecionarBebida(cardapio, listaPedidos, pedido);
+				try {
+					pedido = Cardapio.selecionarBebida(cardapio, listaPedidos, pedido);
+				} catch (IOException e) {
+					System.out.println("Chamada de função inválida!");
+				}
 				break;
 			case 3:
-				pedido = Cardapio.selecionarVinho(cardapio, listaPedidos, pedido);
+				try {
+					pedido = Cardapio.selecionarVinho(cardapio, listaPedidos, pedido);
+				} catch (IOException e) {
+					System.out.println("Chamada de função inválida!");
+				}
 				break;
 			case 4:
 				Pedido.finalizarPedido(pedido, listaPedidos);
@@ -109,7 +122,7 @@ public class Menu {
 
 	}
 
-	public static void incluirItemCardapio(Cardapio cardapio, List<Pedido> listaPedidos) throws IOException {
+	public static void incluirItemCardapio(Cardapio cardapio, List<Pedido> listaPedidos){
 
 		Scanner leitor = new Scanner(System.in);
 		int opcao = -1;
@@ -147,7 +160,7 @@ public class Menu {
 		}
 		// incluirItemCardapio(cardapio, listaPedidos);
 	}
-	public static void editarProdutos(Cardapio cardapio) throws IOException {
+	public static void editarProdutos(Cardapio cardapio){
 
 		int escolha = -1;
 		Scanner leitor = new Scanner(System.in);
@@ -168,7 +181,7 @@ public class Menu {
 				break;
 			}
 			case 3: {
-				Atualizar.editarVinho(cardapio);
+				Atualizar.editarVinho(cardapio);	
 				break;
 			}
 			case 0: {
@@ -183,7 +196,7 @@ public class Menu {
 
 	}
 	
-	public static void deletarProdutos(Cardapio cardapio) throws IOException {
+	public static void deletarProdutos(Cardapio cardapio){
 
 		int escolha = -1;
 		Scanner leitor = new Scanner(System.in);

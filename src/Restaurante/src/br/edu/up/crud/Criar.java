@@ -1,6 +1,5 @@
 package br.edu.up.crud;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,7 +10,7 @@ import br.edu.up.sistema.Armazenamento;
 
 public class Criar {
 
-	public void incluirPrato(List<Prato> listaPratos) throws IOException {
+	public void incluirPrato(List<Prato> listaPratos){
 
 		Prato prato = new Prato();
 
@@ -29,7 +28,7 @@ public class Criar {
 
 	}
 
-	public void incluirBebida(List<Bebida> listaBebidas) throws IOException {
+	public void incluirBebida(List<Bebida> listaBebidas){
 
 		Bebida bebida = new Bebida();
 
@@ -47,7 +46,7 @@ public class Criar {
 
 	}
 
-	public void incluirVinho(List<Vinho> listaVinhos) throws IOException {
+	public void incluirVinho(List<Vinho> listaVinhos){
 		
 		Vinho vinhos = new Vinho();
 		

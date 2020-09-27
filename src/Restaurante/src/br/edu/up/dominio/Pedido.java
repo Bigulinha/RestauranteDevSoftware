@@ -7,6 +7,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Pedido {
 
 	public double total = 0;
@@ -100,64 +101,84 @@ public class Pedido {
 
 	}
 
-	public void gravarPratos(BufferedWriter gravadorPedido) throws IOException {
+	public void gravarPratos(BufferedWriter gravadorPedido) {
 
-		if (listaPratos.size() > 0) {
-			gravadorPedido.write("PRATO(S) \r\n");
-			for (int i = 0; i < listaPratos.size(); i++) {
+		try {
+			if (listaPratos.size() > 0) {
+				gravadorPedido.write("PRATO(S) \r\n");
+				for (int i = 0; i < listaPratos.size(); i++) {
 
-				gravadorPedido.write("PRATO " + (i + 1) + "\r\n");
-				gravadorPedido.write("NOME: " + listaPratos.get(i).nome + "\r\n");
-				gravadorPedido.write("OBSERVAÇÃO: " + listaPratos.get(i).observacao + "\r\n");
-				gravadorPedido.write("PREÇO: R$" + listaPratos.get(i).getPrecoFormatado() + "\r\n");
-				gravadorPedido.write("=================================================================" + "\r\n");
-
+					gravadorPedido.write("PRATO " + (i + 1) + "\r\n");
+					gravadorPedido.write("NOME: " + listaPratos.get(i).nome + "\r\n");
+					gravadorPedido.write("OBSERVAÇÃO: " + listaPratos.get(i).observacao + "\r\n");
+					gravadorPedido.write("PREÇO: R$" + listaPratos.get(i).getPrecoFormatado() + "\r\n");
+					gravadorPedido.write("=================================================================" + "\r\n");
+				}
 			}
+
+		} catch (IOException e) {
+			System.out.println("Problema nas atribuições do comando 'write'!");
+		}
+
+	}
+
+	public void gravarBebidas(BufferedWriter gravadorPedido) {
+
+		try {
+			if (listaBebidas.size() > 0) {
+				gravadorPedido.write("BEBIDA(S) \r\n");
+				for (int i = 0; i < listaBebidas.size(); i++) {
+
+					gravadorPedido.write("BEBIDA " + (i + 1) + "\r\n");
+					gravadorPedido.write("NOME: " + listaBebidas.get(i).nome + "\r\n");
+					gravadorPedido.write("OBSERVAÇÃO: " + listaBebidas.get(i).observacao + "\r\n");
+					gravadorPedido.write("PREÇO: R$" + listaBebidas.get(i).getPrecoFormatado() + "\r\n");
+					gravadorPedido.write("=================================================================" + "\r\n");
+
+				}
+			}
+
+		} catch (IOException e) {
+			System.out.println("Problema nas atribuições do comando 'write'!");
 		}
 	}
 
-	public void gravarBebidas(BufferedWriter gravadorPedido) throws IOException {
+	public void gravarVinhos(BufferedWriter gravadorPedido) {
 
-		if (listaBebidas.size() > 0) {
-			gravadorPedido.write("BEBIDA(S) \r\n");
-			for (int i = 0; i < listaBebidas.size(); i++) {
+		try {
+			if (listaVinhos.size() > 0) {
+				gravadorPedido.write("VINHO(S) \r\n");
+				for (int i = 0; i < listaVinhos.size(); i++) {
 
-				gravadorPedido.write("BEBIDA " + (i + 1) + "\r\n");
-				gravadorPedido.write("NOME: " + listaBebidas.get(i).nome + "\r\n");
-				gravadorPedido.write("OBSERVAÇÃO: " + listaBebidas.get(i).observacao + "\r\n");
-				gravadorPedido.write("PREÇO: R$" + listaBebidas.get(i).getPrecoFormatado() + "\r\n");
-				gravadorPedido.write("=================================================================" + "\r\n");
+					gravadorPedido.write("VINHO " + (i + 1) + "\r\n");
+					gravadorPedido.write("NOME: " + listaVinhos.get(i).nome + "\r\n");
+					gravadorPedido.write("OBSERVAÇÃO: " + listaVinhos.get(i).observacao + "\r\n");
+					gravadorPedido.write("PREÇO: R$" + listaVinhos.get(i).getPrecoFormatado() + "\r\n");
+					gravadorPedido.write("=================================================================" + "\r\n");
 
+				}
 			}
+		} catch (IOException e) {
+			System.out.println("Problema nas atribuições do comando 'write'!");
+
 		}
 	}
 
-	public void gravarVinhos(BufferedWriter gravadorPedido) throws IOException {
-
-		if (listaVinhos.size() > 0) {
-			gravadorPedido.write("VINHO(S) \r\n");
-			for (int i = 0; i < listaVinhos.size(); i++) {
-
-				gravadorPedido.write("VINHO " + (i + 1) + "\r\n");
-				gravadorPedido.write("NOME: " + listaVinhos.get(i).nome + "\r\n");
-				gravadorPedido.write("OBSERVAÇÃO: " + listaVinhos.get(i).observacao + "\r\n");
-				gravadorPedido.write("PREÇO: R$" + listaVinhos.get(i).getPrecoFormatado() + "\r\n");
-				gravadorPedido.write("=================================================================" + "\r\n");
-
-			}
-		}
-	}
-
-	public void gravarPedido(BufferedWriter gravadorPedido) throws IOException {
+	public void gravarPedido(BufferedWriter gravadorPedido){
 
 		gravarPratos(gravadorPedido);
 		gravarBebidas(gravadorPedido);
 		gravarVinhos(gravadorPedido);
 		setTotal();
 
-		gravadorPedido.write("O VALOR TOTAL FOI DE: R$" + getTotalFormatado() + "\r\n");
+		try {
+			gravadorPedido.write("O VALOR TOTAL FOI DE: R$" + getTotalFormatado() + "\r\n");
+			gravadorPedido.write("=================================================================" + "\r\n");
+		} catch (IOException e) {
+			System.out.println("Problema nas atribuições do comando 'write'!");
 
-		gravadorPedido.write("=================================================================" + "\r\n");
+		}
+
 
 	}
 

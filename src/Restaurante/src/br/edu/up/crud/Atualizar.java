@@ -1,11 +1,7 @@
 package br.edu.up.crud;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -27,7 +23,7 @@ import br.edu.up.dominio.Vinho;
 
 public class Atualizar {
 
-	public static void editarPrato(Cardapio cardapio) throws IOException {
+	public static void editarPrato(Cardapio cardapio){
 		System.out.println("DIGITE O NOME DO PRATO PARA ALTERAR: ");
 		Scanner leitor = new Scanner(System.in);
 //		leitor.nextLine();
@@ -54,23 +50,28 @@ public class Atualizar {
 					double novoPrecoItem = leitor.nextDouble();
 					itemPrato.preco = novoPrecoItem;
 				}
-				atualizarPratoArquivo(itemPrato, index);
-
+					atualizarPratoArquivo(itemPrato, index);
 			}
 			index++;
 		}
 
 	}
 
-	public static void atualizarPratoArquivo(Prato itemPrato, int index) throws IOException {
+	public static void atualizarPratoArquivo(Prato itemPrato, int index){
 		// NECESSITA PADRONIZAR COMO AS INFORMAÇÕES IRÃO SAIR NO ARQUIVO.
-		Path path = Paths.get("d:\\Eclipse\\atv3\\pratos.csv");
-		List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
-		lines.set(index, itemPrato.nome + ";" + itemPrato.preco);
-		Files.write(path, lines, StandardCharsets.UTF_8);
+		Path path = Paths.get("..\\Restaurante\\src\\arquivos\\pratos.csv");
+		List<String> lines;
+		try {
+			lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+			lines.set(index, itemPrato.nome + ";" + itemPrato.preco);
+			Files.write(path, lines, StandardCharsets.UTF_8);
+			System.out.println("PRATO ATUALIZADO COM SUCESSO\n");
+		} catch (IOException e) {
+			System.out.println("Erro no processamento do comando 'write'!");
+		}
 	}
 
-	public static void editarBebida(Cardapio cardapio) throws IOException {
+	public static void editarBebida(Cardapio cardapio){
 
 		System.out.println("DIGITE O NOME DA BEBIDA PARA ALTERAR: ");
 		Scanner leitor = new Scanner(System.in);
@@ -99,22 +100,29 @@ public class Atualizar {
 					itemBebida.preco = novoPrecoItem;
 				}
 				atualizarBebidaArquivo(itemBebida, index);
+				
 
 			}
 			index++;
 		}
 	}
 
-	public static void atualizarBebidaArquivo(Bebida itemBebida, int index) throws IOException {
+	public static void atualizarBebidaArquivo(Bebida itemBebida, int index){
 
 		// NECESSITA PADRONIZAR PARA O ARQUIVO FINAL.
-		Path path = Paths.get("d:\\Eclipse\\atv3\\bebidas-tabuladas.txt");
-		List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
-		lines.set(index, itemBebida.preco + "\t" + itemBebida.nome);
-		Files.write(path, lines, StandardCharsets.UTF_8);
+		Path path = Paths.get("..\\Restaurante\\src\\arquivos\\bebidas-tabuladas.txt");
+		List<String> lines;
+		try {
+			lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+			lines.set(index, itemBebida.preco + "\t" + itemBebida.nome);
+			Files.write(path, lines, StandardCharsets.UTF_8);
+			System.out.println("BEBIDA ATUALIZADA COM SUCESSO\n");
+		} catch (IOException e) {
+			System.out.println("Erro na chamada da função 'write'!");
+		}
 	}
 
-	public static void editarVinho(Cardapio cardapio) throws IOException {
+	public static void editarVinho(Cardapio cardapio){
 
 		System.out.println("DIGITE O NOME DO VINHO PARA ALTERAR: ");
 		Scanner leitor = new Scanner(System.in);
@@ -150,12 +158,18 @@ public class Atualizar {
 		}
 	}
 
-	public static void atualizarVinhoArquivo(Vinho itemVinho, int index) throws IOException {
+	public static void atualizarVinhoArquivo(Vinho itemVinho, int index){
 
-		Path path = Paths.get("d:\\Eclipse\\atv3\\vinhos-tabulados.txt");
-		List<String> lines = Files.readAllLines(path, StandardCharsets.UTF_8);
-		lines.set(index, itemVinho.preco + "\t" + itemVinho.nome);
-		Files.write(path, lines, StandardCharsets.UTF_8);
+		Path path = Paths.get("..\\Restaurante\\src\\arquivos\\vinhos-tabulados.txt");
+		List<String> lines;
+		try {
+			lines = Files.readAllLines(path, StandardCharsets.UTF_8);
+			lines.set(index, itemVinho.preco + "\t" + itemVinho.nome);
+			Files.write(path, lines, StandardCharsets.UTF_8);
+			System.out.println("VINHO ATUALIZADO COM SUCESSO\n");
+		} catch (IOException e) {
+			System.out.println("Erro na chamada da função 'write'");
+		}
 
 	}
 
